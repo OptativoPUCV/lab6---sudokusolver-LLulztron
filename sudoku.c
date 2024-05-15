@@ -107,22 +107,40 @@ List* get_adj_nodes(Node* n)
 {
    List* list = createList();
    int i,j;
+   
    for(i = 0; i < 9; i++) 
    {
       for(j = 0; j < 9; j++) 
       {
          if(n -> sudo[i][j] == 0) 
          {
-            for(int k = 1; k <= 9; k++) 
-            {
-               Node* adj = copy(n);
-               adj -> sudo[i][j] = k;
-               if(is_valid(adj)) 
-               {
-                  pushBack(list, adj);
-               }
-            }
-            return list;
+            Node* aux=copy(n);
+             aux->sudo[i][j]=1;
+             pushBack(list,aux);
+             aux=copy(n);
+             aux->sudo[i][j]=2;
+             pushBack(list,aux);
+             aux=copy(n);
+             aux->sudo[i][j]=3;
+             pushBack(list,aux);
+             aux=copy(n);
+             aux->sudo[i][j]=4;
+             pushBack(list,aux);
+             aux=copy(n);
+             aux->sudo[i][j]=5;
+             pushBack(list,aux);
+             aux=copy(n);
+             aux->sudo[i][j]=6;
+             pushBack(list,aux);
+             aux=copy(n);
+             aux->sudo[i][j]=7;
+             pushBack(list,aux);
+             aux=copy(n);
+             aux->sudo[i][j]=8;
+             pushBack(list,aux);
+             aux=copy(n);
+             aux->sudo[i][j]=9;
+             pushBack(list,aux);
          }
       }
    }
