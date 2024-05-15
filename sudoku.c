@@ -55,7 +55,7 @@ void print_node(Node* n)
 
 int is_valid(Node* n)
 {
-   int i, j, k;
+/*   int i, j, k;
    for (i = 0; i < 9; i++) 
    {
       for (j = 0; j < 9; j++) 
@@ -99,7 +99,53 @@ int is_valid(Node* n)
          }
       }
    }
-   return 1;
+   return 1;                  */
+
+   {
+      int i,j,k;
+      for(i=0;i<9;i++)
+         {
+            for(j=0;j<9;j++)
+               {
+                  if(n->sudo[i][j]==0)
+                  {
+                     continue;
+                  }
+                  for(k=0;k<9;k++)
+                     {
+                        if(k!=j)
+                        {
+                           if(n->sudo[i][j]==n->sudo[i][k])
+                              return 0;
+                        }
+                     }
+                  for(k=0;k<9;k++)
+                     {
+                        if(k!=i)
+                        {
+                           if(n->sudo[i][j]==n->sudo[k][j])
+                              return 0;
+                        }
+                     }
+                  int x0 = (i/3)*3;
+                  int y0 = (j/3)*3;
+                  for(k=0;k<3;k++)
+                     {
+                        for(int l=0;l<3;l++)
+                           {
+                              if(k+x0!=i && l+y0!=j)
+                              {
+                                 if(n->sudo[i][j]==n->sudo[k+x0][l+y0])
+                                 {
+                                    return 0;
+                                 }
+                              }
+                           }
+                     }
+               }
+         }
+      return 1;
+   }
 }
 
 
@@ -114,33 +160,34 @@ List* get_adj_nodes(Node* n)
       {
          if(n -> sudo[i][j] == 0) 
          {
-            Node* aux=copy(n);
-             aux->sudo[i][j]=1;
-             pushBack(list,aux);
-             aux=copy(n);
-             aux->sudo[i][j]=2;
-             pushBack(list,aux);
-             aux=copy(n);
-             aux->sudo[i][j]=3;
-             pushBack(list,aux);
-             aux=copy(n);
-             aux->sudo[i][j]=4;
-             pushBack(list,aux);
-             aux=copy(n);
-             aux->sudo[i][j]=5;
-             pushBack(list,aux);
-             aux=copy(n);
-             aux->sudo[i][j]=6;
-             pushBack(list,aux);
-             aux=copy(n);
-             aux->sudo[i][j]=7;
-             pushBack(list,aux);
-             aux=copy(n);
-             aux->sudo[i][j]=8;
-             pushBack(list,aux);
-             aux=copy(n);
-             aux->sudo[i][j]=9;
-             pushBack(list,aux);
+            Node* aux = copy(n);
+            
+            aux -> sudo[i][j] = 1;
+            pushBack(list,aux);
+            aux = copy(n);
+            aux -> sudo[i][j] = 2;
+            pushBack(list,aux);
+            aux = copy(n);
+            aux -> sudo[i][j] = 3;
+            pushBack(list,aux);
+            aux = copy(n);
+            aux -> sudo[i][j] = 4;
+            pushBack(list,aux);
+            aux = copy(n);
+            aux -> sudo[i][j] = 5;
+            pushBack(list,aux);
+            aux = copy(n);
+            aux -> sudo[i][j] = 6;
+            pushBack(list,aux);
+            aux = copy(n);
+            aux -> sudo[i][j] = 7;
+            pushBack(list,aux);
+            aux = copy(n);
+            aux -> sudo[i][j] = 8;
+            pushBack(list,aux);
+            aux = copy(n);
+            aux -> sudo[i][j] = 9;
+            pushBack(list,aux);
          }
       }
    }
