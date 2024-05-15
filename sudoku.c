@@ -58,7 +58,7 @@ int is_valid(Node* n)
    int i, j, k;
    for (i = 0; i < 9; i++) {
       for (j = 0; j < 9; j++) {
-         if (n -> sudo[0][0] == 0) {
+         if (n -> sudo[i][j] == 0) {
             continue;
          }
          for (k = 0; k < 9; k++) {
@@ -88,9 +88,8 @@ int is_valid(Node* n)
          }
       }
    }
-   return 1;                  /*
-
-   {
+   return 1;                  
+/*{
       int i,j,k;
       for(i=0;i<9;i++)
          {
